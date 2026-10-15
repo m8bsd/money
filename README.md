@@ -1,37 +1,30 @@
-# Vue Shop
+# MiniShop
 
-A simple e-commerce front end built with **Vue 3**, **Vite**, **Pinia**, **Vue Router** and **Bootstrap 5**.
+A small SwiftUI e-commerce app: product catalog with search and category filter, product detail, a persistent cart, and a demo checkout.
 
-## Features
-
-- Product catalog with search, category filter and sorting
-- Product detail page with quantity picker
-- Cart (add, change quantity, remove, clear) persisted in `localStorage`
-- Shipping calculation (free over $100) and order summary
-- Checkout form with Bootstrap validation and a confirmation screen
+**Requires:** Xcode 15+, iOS 17+ (uses `ContentUnavailableView` and `NavigationStack`).
 
 ## Run it
 
-```bash
-npm install
-npm run dev      # development server
-npm run build    # production build in dist/
-npm run preview  # preview the production build
-```
+1. In Xcode: **File ▸ New ▸ Project ▸ iOS ▸ App** (Interface: SwiftUI, Language: Swift), name it `MiniShop`.
+2. Delete the generated `ContentView.swift` and the generated `...App.swift` file.
+3. Drag all `.swift` files from this folder into the project (tick "Copy items if needed").
+4. Press **Run**.
 
-## Structure
+## Files
 
-```
-src/
-  data/products.js      product list (replace with an API call)
-  store/cart.js         Pinia cart store
-  components/           NavBar, ProductCard, StarRating
-  views/                Home, Product, Cart, Checkout
-  router.js             routes (hash mode, works on any static host)
-```
+| File | Purpose |
+|---|---|
+| `ShopApp.swift` | App entry point, tab bar (Shop / Cart with badge) |
+| `Models.swift` | `Product`, `CartItem`, sample catalog, price formatting |
+| `CartStore.swift` | Observable cart: add / remove / quantity / total, saved to `UserDefaults` |
+| `CatalogView.swift` | Grid of products, search, category filter |
+| `ProductDetailView.swift` | Detail page with add-to-cart and quantity stepper |
+| `CartView.swift` | Cart list with swipe-to-delete and total |
+| `CheckoutView.swift` | Form validation and order confirmation (no real payment) |
 
 ## Next steps
 
-Checkout is a demo: it clears the cart and shows a confirmation, nothing is sent anywhere.
-To go live, load products from a backend and replace `placeOrder` in
-`src/views/CheckoutView.vue` with a call to your orders/payment API.
+- Replace `Product.sample` with a network call (`URLSession` + `Codable`) and load images with `AsyncImage`.
+- Add real payments (Apple Pay via `PassKit`, or Stripe) where the `TODO` is in `CheckoutView`.
+- Add order history and user accounts.
