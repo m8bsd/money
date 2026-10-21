@@ -5,16 +5,9 @@ java -version
 ```
 javac -version
 ```
-# run a single source file directly, with no separate compile step
+# run a single source file
 ```
 javac main.java
-```
-```
-java main
-```
-# Multiple files:
-```
-javac *.java
 ```
 ```
 java main
