@@ -1,8 +1,4 @@
-# MiniShop
-
-A small JAVA e-commerce app
-
-# 1. Check that Java is installed:
+# Check that Java is installed:
 ```
 java -version
 ```
@@ -19,5 +15,7 @@ java main
 # Multiple files:
 ```
 javac *.java
+```
+```
 java main
 ```
